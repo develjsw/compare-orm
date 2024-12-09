@@ -5,35 +5,35 @@ export class GoodsEntity {
     @PrimaryColumn('int', {
         name: 'goods_id'
     })
-    goodsId: number
+    goodsId: number;
 
     @Column('varchar', {
         name: 'goods_name'
     })
-    goodsName: string
+    goodsName: string;
 
     @Column('int', {
         name: 'goods_price'
     })
-    goodsPrice: number
+    goodsPrice: number;
 
     @Column('char', {
         name: 'goods_is_use'
     })
-    goodsIsUse: string
+    goodsIsUse: string;
 
     @Column('datetime', {
         name: 'reg_date'
     })
-    regDate: Date
+    regDate: Date;
 
     @Column('datetime', {
         name: 'mod_date'
     })
-    modDate: Date
+    modDate: Date;
 
     @Column('datetime', {
         name: 'del_date'
     })
-    delDate: Date
+    delDate: Date;
 }

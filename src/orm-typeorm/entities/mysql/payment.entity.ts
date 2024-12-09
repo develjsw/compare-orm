@@ -5,35 +5,35 @@ export class PaymentEntity {
     @PrimaryColumn('int', {
         name: 'payment_id'
     })
-    paymentId: number
+    paymentId: number;
 
     @Column('int', {
         name: 'member_id'
     })
-    memberId: number
+    memberId: number;
 
     @Column('int', {
         name: 'goods_id'
     })
-    goodsId: number
+    goodsId: number;
 
     @Column('int', {
         name: 'amount'
     })
-    amount: number
+    amount: number;
 
     @Column('char', {
         name: 'payment_status'
     })
-    paymentStatus: string
+    paymentStatus: string;
 
     @Column('datetime', {
         name: 'reg_date'
     })
-    regDate: string
+    regDate: string;
 
     @Column('datetime', {
         name: 'mod_date'
     })
-    modDate: string
+    modDate: string;
 }
