@@ -37,15 +37,15 @@ model tb_member {
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model tb_payment {
-  payment_id     Int        @id @default(autoincrement()) @db.UnsignedInt
-  member_id      Int?       @db.UnsignedInt
-  goods_id       Int?       @db.UnsignedInt
+  payment_id     Int       @id @default(autoincrement()) @db.UnsignedInt
+  member_id      Int       @db.UnsignedInt
+  goods_id       Int       @db.UnsignedInt
   amount         Int
-  payment_status String     @db.Char(10)
-  reg_date       DateTime   @db.DateTime(0)
-  mod_date       DateTime?  @db.DateTime(0)
-  tb_goods       tb_goods?  @relation(fields: [goods_id], references: [goods_id], map: "fk_payment_goods")
-  tb_member      tb_member? @relation(fields: [member_id], references: [member_id], map: "fk_payment_member")
+  payment_status String    @db.Char(10)
+  reg_date       DateTime  @db.DateTime(0)
+  mod_date       DateTime? @db.DateTime(0)
+  tb_goods       tb_goods  @relation(fields: [goods_id], references: [goods_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_payment_goods")
+  tb_member      tb_member @relation(fields: [member_id], references: [member_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_payment_member")
 
   @@index([goods_id], map: "fk_payment_goods")
   @@index([member_id], map: "fk_payment_member")

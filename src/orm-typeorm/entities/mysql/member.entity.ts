@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { PaymentEntity } from './payment.entity';
 
 @Entity('tb_member')
 export class MemberEntity {
@@ -56,4 +57,7 @@ export class MemberEntity {
         name: 'drop_date'
     })
     dropDate: Date;
+
+    @OneToMany(() => PaymentEntity, (payment) => payment.member)
+    payments: PaymentEntity[];
 }

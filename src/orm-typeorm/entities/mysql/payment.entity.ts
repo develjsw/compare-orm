@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { MemberEntity } from './member.entity';
+import { GoodsEntity } from './goods.entity';
 
 @Entity('tb_payment')
 export class PaymentEntity {
@@ -36,4 +38,12 @@ export class PaymentEntity {
         name: 'mod_date'
     })
     modDate: string;
+
+    @ManyToOne(() => MemberEntity, (member) => member.payments)
+    @JoinColumn({ name: 'member_id' })
+    member: MemberEntity;
+
+    @ManyToOne(() => GoodsEntity, (goods) => goods.payments)
+    @JoinColumn({ name: 'goods_id' })
+    goods: GoodsEntity;
 }

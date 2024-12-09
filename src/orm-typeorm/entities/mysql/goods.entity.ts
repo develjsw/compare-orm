@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { PaymentEntity } from './payment.entity';
 
 @Entity('tb_goods')
 export class GoodsEntity {
@@ -36,4 +37,7 @@ export class GoodsEntity {
         name: 'del_date'
     })
     delDate: Date;
+
+    @OneToMany(() => PaymentEntity, (payment) => payment.goods)
+    payments: PaymentEntity[];
 }
