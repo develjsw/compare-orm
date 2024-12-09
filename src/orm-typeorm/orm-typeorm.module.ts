@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { OrmTypeormController } from './orm-typeorm.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
+import { GoodsModule } from './goods/goods.module';
 
 dotenv.config();
 
@@ -17,9 +17,9 @@ dotenv.config();
             entities: ['dist/**/entities/mysql/*.entity{.ts,.js}'],
             synchronize: false,
             logging: 'all'
-        })
+        }),
+        GoodsModule
     ],
-    controllers: [OrmTypeormController],
     providers: [],
     exports: []
 })
