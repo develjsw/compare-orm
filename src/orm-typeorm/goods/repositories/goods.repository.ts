@@ -13,4 +13,12 @@ export class GoodsRepository {
     async findGoodsAll(): Promise<GoodsEntity[]> {
         return await this.goodsRepository.find();
     }
+
+    async findGoodsById(goodsId: number): Promise<GoodsEntity> {
+        return await this.goodsRepository.findOne({
+            where: {
+                goodsId
+            }
+        });
+    }
 }

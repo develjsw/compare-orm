@@ -16,4 +16,15 @@ export class GoodsService {
 
         return goodsList;
     }
+
+    async findGoodsById(goodsId: number): Promise<GoodsEntity> {
+        const goods: GoodsEntity = await this.goodsRepository.findGoodsById(goodsId);
+        // const testCase2: number = goods.goods_id; // 값이 없는경우 Error 발생
+
+        if (!goods) {
+            throw new NotFoundException();
+        }
+
+        return goods;
+    }
 }

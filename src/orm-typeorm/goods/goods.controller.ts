@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { GoodsService } from './servicies/goods.service';
 
 @Controller('orm-typeorm/goods')
@@ -8,5 +8,10 @@ export class GoodsController {
     @Get()
     async findGoodsAll() {
         return await this.goodsService.findGoodsAll();
+    }
+
+    @Get(':id')
+    async findGoodsById(@Param('id', ParseIntPipe) goodsId: number) {
+        return await this.goodsService.findGoodsById(goodsId);
     }
 }
