@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, NotFoundException, Param, ParseIntPipe } from '@nestjs/common';
 import { PaymentService } from './servicies/payment.service';
 import { PaymentEntity } from '../entities/mysql/payment.entity';
 
@@ -9,6 +9,10 @@ export class PaymentController {
     @Get('members/:id')
     async findPaymentAndMemberAndGoodsByMemberId(@Param('id', ParseIntPipe) memberId: number) {
         const paymentList: PaymentEntity[] = await this.paymentService.findPaymentAndMemberAndGoodsByMemberId(memberId);
+
+        if (!paymentList.length) {
+            throw new NotFoundException();
+        }
 
         return paymentList;
     }
