@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 import { GoodsModule } from './goods/goods.module';
 import { PaymentModule } from './payment/payment.module';
+import { MemberModule } from './member/member.module';
 
 dotenv.config();
 
@@ -20,7 +21,8 @@ dotenv.config();
             logging: 'all'
         }),
         GoodsModule,
-        PaymentModule
+        PaymentModule,
+        MemberModule
     ],
     providers: [],
     exports: []
